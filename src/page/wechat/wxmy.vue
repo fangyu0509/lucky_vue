@@ -187,11 +187,20 @@
        </div>
        <div class="space"></div>
        <!-- 精选推荐 -->
-       <div class="recommend">
+       <div class="recommend" :style="obj">
           <div>
-              <el-button type="text" icon="el-icon-star-on" disabled  >精选推荐</el-button>
+              <el-button type="text" icon="el-icon-star-on" disabled style="font-size:15px" >精选推荐</el-button>
           </div>
-          <div></div>
+          <div>
+                <el-row :gutter="10">
+                    <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12"  v-for="(item,i) in list" v-bind:key="item.id">
+                        <div class="grid-content bg-purple" >
+                            <display :imgUrl="item.imgUrl" :title="item.title" :price="item.price" :sellNum="item.sellNum"></display>
+                        </div>
+                    </el-col>
+                </el-row>
+              
+          </div>
        </div>
        
 
@@ -200,7 +209,6 @@
 </template>
 <style>
 .recommend{
-    text-align: center;
     font-size: 22px;
 }
 
@@ -292,12 +300,25 @@
 }
 </style>
 <<script>
+    import display from "../../layout/display.vue";
     export default {
         data () {
             return {
-                srcHead:"https://portal.microport.com/shwcyl/images/logo.png?r=20191101"
+                srcHead:"https://portal.microport.com/shwcyl/images/logo.png?r=20191101",
+                list:[
+                    {"imgUrl":"https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1592817586.03891296.jpg","title":"小米助力电动车","price":2999.00,"sellNum":200,"id":1},
+                    {"imgUrl":"https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1591872046.56035016.jpg","title":"垃圾桶家用","price":522.00,"sellNum":20000,"id":2},
+                    {"imgUrl":"https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1581411766.42359239.jpg","title":"手持小风扇","price":122.00,"sellNum":200,"id":3},
+                    {"imgUrl":"https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1575427252.0524222.jpg","title":"胶囊雨伞","price":43.00,"sellNum":200,"id":4},
+                    {"imgUrl":"https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1566998167.20454521.jpg","title":"商品5","price":78.00,"sellNum":200,"id":5}
+                ],
+                obj:{
+                        width:document.body.clientWidth-15+"px"
+                    }
             }
+        },
+        components:{
+            display
         }
-    
     }
 </script>

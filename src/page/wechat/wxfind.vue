@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-        main
+        find
 
     </div>
 </template>
@@ -15,15 +15,11 @@
 }
 </style>
 <<script>
-    import maCreate from "../create";
     export default {
         data () {
             return {
                 srcHead:"https://portal.microport.com/shwcyl/images/logo.png?r=20191101"
             }
-        },
-        components:{
-            maCreate
         }
     
     }
